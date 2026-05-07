@@ -10,9 +10,6 @@ jobs:
   deploy:
     runs-on: ubuntu-latest
 
-    env:
-      HUSKY: 0
-
     # Etapes
     steps:
       # 1. Checkout du code source
@@ -25,6 +22,9 @@ jobs:
         with:
           node-version: "22" # Remplacez par la version Node.js utilisée par votre projet
           cache: "npm"
+
+      - name: Permissions husky
+        run: chmod 777 .husky/*
 
       - name: Installation des dépendances
         run: npm install
